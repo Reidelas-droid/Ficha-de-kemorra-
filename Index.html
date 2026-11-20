@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crônicas de Kemorra — Ficha Oficial de Caçador (5e Adaptado)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0b0c10;
+      --bg-panel: #13161e;
+      --bg-card: #1a1e29;
+      --bg-input: #0f1218;
+      --border-brass: #8a6d3f;
+      --border-subtle: #2a3040;
+      --gold: #d4af6a;
+      --gold-bright: #f2d594;
+      --crimson: #a82432;
+      --crimson-glow: #d93848;
+      --sapphire: #3d7ab8;
+      --sapphire-bright: #6fb2f2;
+      --text-main: #e8e2d5;
+      --text-muted: #9b9589;
+      --success: #3e8e62;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top center, #1b202e 0%, var(--bg-deep) 65%);
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .font-title {
+      font-family: 'Cinzel', Georgia, serif;
+      letter-spacing: 0.04em;
+    }
+
+    .font-serif {
+      font-family: 'Crimson Pro', Georgia, serif;
+    }
+
+    .print-page-bg {
+      display: none;
+    }
+
+    .print-banner {
+      display: none;
+    }
+
+    .print-mirror {
+      display: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 12px;
+      line-height: 1.45;
+      padding: 6px 8px;
+      border-radius: 4px;
+      min-height: 36px;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 12, 16, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-brass);
+      padding: 10px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-sigil {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, var(--crimson) 0%, #2a0a10 75%);
+      display: grid;
+      place-items: center;
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 17px;
+      box-shadow: 0 0 12px rgba(212, 175, 106, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-size: 15px;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-brass);
+      border-radius: 5px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn:hover {
+      background: #252b3b;
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #4b391e 0%, #2b2010 100%);
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #634c29 0%, #3d2e17 100%);
+      color: #fff;
+    }
+
+    .btn-crimson {
+      background: linear-gradient(135deg, #6e1620 0%, #450d14 100%);
+      border-color: var(--crimson-glow);
+      color: #ffecee;
+    }
+
+    .btn-crimson:hover {
+      background: linear-gradient(135deg, #8c1e2a 0%, #5c131c 100%);
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 3px 7px;
+      font-size: 11px;
+    }
+
+    .theme-select {
+      width: auto !important;
+      padding: 5px 9px !important;
+      font-size: 12px !important;
+      border-color: var(--border-brass) !important;
+      background: var(--bg-card) !important;
+      color: var(--gold-bright) !important;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .save-status {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-right: 4px;
+    }
+
+    .sheet-container {
+      max-width: 1280px;
+      margin: 18px auto 74px;
+      padding: 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, #161a24 0%, var(--bg-panel) 100%);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--border-brass);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .panel-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 10px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(138, 109, 63, 0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg-input);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-family: inherit;
+      font-size: 13px;
+      transition: border-color 0.15s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      line-height: 1.5;
+    }
+
+    label.field-label {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .char-name-input {
+      font-family: 'Cinzel', serif !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      color: var(--gold-bright) !important;
+      padding: 8px 10px !important;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 310px 1fr 340px;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .abilities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .ability-box {
+      background: linear-gradient(180deg, #1f2432 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border-brass);
+      border-radius: 6px;
+      padding: 8px 6px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ability-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    .ability-mod {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin: 2px 0 4px;
+      cursor: pointer;
+      display: inline-block;
+      padding: 1px 10px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .ability-mod:hover {
+      background: rgba(212, 175, 106, 0.18);
+      color: var(--gold-bright);
+    }
+
+    .ability-score {
+      width: 56px !important;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px !important;
+      padding: 3px !important;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .strip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .stat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .stat-pill .val {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 6px;
+      border-radius: 4px;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .list-row:nth-child(even) {
+      background: rgba(255,255,255,0.025);
+    }
+
+    .list-row:hover {
+      background: rgba(212, 175, 106, 0.09);
+    }
+
+    .prof-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid var(--text-muted);
+      background: transparent;
+      cursor: pointer;
+      display: inline-grid;
+      place-items: center;
+      font-size: 9px;
+      font-weight: 800;
+      color: #0b0c10;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .prof-dot[data-level="1"] {
+      background: var(--gold);
+      border-color: var(--gold-bright);
+    }
+
+    .prof-dot[data-level="2"] {
+      background: var(--sapphire-bright);
+      border-color: #fff;
+      box-shadow: 0 0 6px var(--sapphire-bright);
+    }
+
+    .skill-name {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .skill-attr {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      width: 28px;
+      text-align: right;
+    }
+
+    .skill-bonus {
+      font-weight: 700;
+      min-width: 28px;
+      text-align: right;
+      color: var(--gold-bright);
+      cursor: pointer;
+    }
+
+    .vitals-top {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .vital-box {
+      background: linear-gradient(180deg, #1f2432 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border-brass);
+      border-radius: 6px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+
+    .vital-box input {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: transparent;
+      border: none;
+      padding: 2px;
+    }
+
+    .vital-box input:focus {
+      background: var(--bg-input);
+    }
+
+    .hp-panel {
+      background: linear-gradient(180deg, rgba(168,36,50,0.22) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--crimson);
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .hp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .hp-bar-track {
+      height: 8px;
+      background: #0a0b0e;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #3a2328;
+    }
+
+    .hp-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--crimson) 0%, #e04656 100%);
+      width: 100%;
+      transition: width 0.25s ease;
+    }
+
+    .death-exhaust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mini-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 8px;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .check-group {
+      display: flex;
+      gap: 5px;
+    }
+
+    .check-group input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .dynamic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+    }
+
+    .dynamic-table th {
+      text-align: left;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 4px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .dynamic-table td {
+      padding: 4px 3px;
+      vertical-align: middle;
+    }
+
+    .icon-btn {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      color: var(--gold);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--gold-bright);
+      background: #232836;
+    }
+
+    .icon-btn.danger {
+      color: #e86f7c;
+    }
+
+    .icon-btn.danger:hover {
+      border-color: var(--crimson-glow);
+      background: rgba(168,36,50,0.2);
+    }
+
+    .spell-header-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .slot-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      padding: 6px;
+      text-align: center;
+    }
+
+    .slot-box .slot-lvl {
+      font-size: 10px;
+      color: var(--sapphire-bright);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .slot-inputs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .slot-inputs input {
+      width: 40px;
+      text-align: center;
+      padding: 2px;
+      font-weight: 700;
+    }
+
+    .coins-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .coin-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      padding: 6px;
+      text-align: center;
+    }
+
+    .coin-box input {
+      text-align: center;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .dice-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 12, 16, 0.96);
+      border-top: 1px solid var(--border-brass);
+      padding: 8px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      z-index: 120;
+    }
+
+    .dice-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .die-btn {
+      background: var(--bg-card);
+      color: var(--gold-bright);
+      border: 1px solid var(--border-brass);
+      border-radius: 4px;
+      padding: 4px 9px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .die-btn:hover {
+      background: var(--gold);
+      color: #0b0c10;
+    }
+
+    .mode-select {
+      width: auto !important;
+      padding: 4px 8px !important;
+      font-size: 12px !important;
+      border-color: var(--border-brass) !important;
+    }
+
+    .roll-output {
+      font-family: 'Crimson Pro', serif;
+      font-size: 16px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .roll-total {
+      background: var(--crimson);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 17px;
+      border: 1px solid var(--gold);
+    }
+
+    .roll-total.crit {
+      background: #1f6b45;
+      box-shadow: 0 0 10px rgba(62, 142, 98, 0.7);
+    }
+
+    .roll-total.fumble {
+      background: #78121d;
+      box-shadow: 0 0 10px rgba(217, 56, 72, 0.7);
+    }
+
+    @media (max-width: 1080px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .col-right {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .identity-grid, .main-grid, .vitals-top {
+        grid-template-columns: 1fr;
+      }
+      .vitals-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .dice-bar {
+        position: static;
+      }
+      .sheet-container {
+        margin-bottom: 18px;
+      }
+    }
+
+    /* PRINT / PDF ESTILIZADO PARA KEMORRA */
+    @page {
+      size: A4 portrait;
+      margin: 0mm;
+    }
+
+    @media print {
+      html, body {
+        width: 100%;
+        height: auto;
+        font-size: 10.5px;
+        line-height: 1.35;
+        background: #0b0c10 !important;
+        color: #ebe4d5 !important;
+      }
+
+      .toolbar, .dice-bar, .no-print {
+        display: none !important;
+      }
+
+      .print-page-bg {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        background: radial-gradient(circle at top center, #1b202e 0%, #0b0c10 70%) !important;
+        border: 5mm solid #0b0c10;
+      }
+
+      .print-page-bg::after {
+        content: "";
+        position: absolute;
+        inset: 3mm;
+        border: 1px solid rgba(212, 175, 106, 0.35);
+        pointer-events: none;
+      }
+
+      .sheet-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 10mm 9mm;
+        position: relative;
+        z-index: 2;
+      }
+
+      .print-banner {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #1b1116 0%, #141824 50%, #1b1116 100%) !important;
+        border: 1.5px solid #9e7e46 !important;
+        border-radius: 6px;
+        padding: 8px 14px;
+        margin-bottom: 10px;
+      }
+
+      .print-banner-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .print-banner-title {
+        font-family: 'Cinzel', serif;
+        font-size: 16px;
+        font-weight: 900;
+        color: #f2d594 !important;
+        letter-spacing: 0.1em;
+      }
+
+      .print-banner-sub {
+        font-family: 'Crimson Pro', serif;
+        font-style: italic;
+        font-size: 11px;
+        color: #c2b69e !important;
+      }
+
+      .print-banner-seal {
+        font-family: 'Cinzel', serif;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #d4af6a !important;
+        border: 1px solid rgba(212, 175, 106, 0.5);
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: rgba(168, 36, 50, 0.2) !important;
+      }
+
+      .panel {
+        background: #141822 !important;
+        border: 1px solid #353d52 !important;
+        border-top: 2px solid #9e7e46 !important;
+        box-shadow: none !important;
+        padding: 9px 10px;
+        margin-bottom: 9px;
+        break-inside: avoid;
+      }
+
+      .panel.allow-break {
+        break-inside: auto;
+      }
+
+      .panel-title {
+        font-size: 11px;
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+        color: #e6c47e !important;
+        border-bottom: 1px solid rgba(158, 126, 70, 0.55) !important;
+      }
+
+      .identity-grid {
+        grid-template-columns: 2fr repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .char-name-input {
+        font-size: 14px !important;
+        padding: 4px 7px !important;
+        color: #f5da9a !important;
+      }
+
+      .main-grid {
+        grid-template-columns: 205px 1fr 225px;
+        gap: 9px;
+      }
+
+      .col-right {
+        grid-column: auto !important;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        background: #0d1017 !important;
+        color: #f0eadc !important;
+        border: 1px solid #2e364a !important;
+        padding: 3px 6px;
+        font-size: 10.5px;
+      }
+
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      input::placeholder, textarea::placeholder {
+        color: transparent !important;
+      }
+
+      textarea {
+        display: none !important;
+      }
+
+      .print-mirror {
+        display: block !important;
+        background: #0d1017 !important;
+        color: #ebe4d5 !important;
+        border: 1px solid #2e364a !important;
+        margin-bottom: 6px;
+      }
+
+      .ability-box {
+        background: #1a1f2c !important;
+        border: 1px solid #8a6d3f !important;
+        padding: 5px 4px;
+      }
+
+      .ability-name { font-size: 9px; color: #e2be76 !important; }
+      .ability-mod { font-size: 16px; margin: 1px 0 2px; color: #ffffff !important; }
+      .ability-score { width: 42px !important; font-size: 10px !important; padding: 2px !important; }
+
+      .stat-pill {
+        background: #1a1f2c !important;
+        border: 1px solid #484238 !important;
+        padding: 5px;
+      }
+      .stat-pill .val { font-size: 14px !important; color: #f2d594 !important; }
+
+      .list-row {
+        padding: 2px 4px;
+        font-size: 10px;
+      }
+      .prof-dot { width: 12px; height: 12px; font-size: 8px; }
+
+      .vital-box {
+        background: #1a1f2c !important;
+        border: 1px solid #8a6d3f !important;
+        padding: 5px 4px;
+      }
+      .vital-box input { font-size: 14px !important; background: transparent !important; border: none !important; }
+
+      .hp-panel {
+        background: linear-gradient(180deg, #2e1219 0%, #1a1e29 100%) !important;
+        border: 1.5px solid #b52a38 !important;
+        padding: 7px;
+      }
+      .hp-bar-fill {
+        background: linear-gradient(90deg, #a82432 0%, #e04656 100%) !important;
+      }
+
+      .mini-card, .slot-box, .coin-box {
+        background: #1a1f2c !important;
+        border: 1px solid #353d52 !important;
+        padding: 5px;
+      }
+
+      .slot-inputs input { width: 28px; font-size: 10px; }
+
+      /* TEMA PERGAMINHO DA CINZA */
+      body.pdf-parchment,
+      body.pdf-parchment html {
+        background: #efe6d2 !important;
+        color: #1f1a16 !important;
+      }
+
+      body.pdf-parchment .print-page-bg {
+        background: radial-gradient(circle at center, #f6efe0 0%, #e6d9be 100%) !important;
+        border: 5mm solid #e6d9be;
+      }
+
+      body.pdf-parchment .print-page-bg::after {
+        border: 1.5px double #7c5c32;
+      }
+
+      body.pdf-parchment .print-banner {
+        background: linear-gradient(90deg, #e7dac0 0%, #f5eedf 50%, #e7dac0 100%) !important;
+        border: 1.5px solid #7c5c32 !important;
+      }
+
+      body.pdf-parchment .print-banner-title {
+        color: #6b151e !important;
+      }
+
+      body.pdf-parchment .print-banner-sub {
+        color: #4f4234 !important;
+      }
+
+      body.pdf-parchment .print-banner-seal {
+        color: #5e4422 !important;
+        border-color: #8c6a3c !important;
+        background: rgba(138, 28, 40, 0.1) !important;
+      }
+
+      body.pdf-parchment .panel {
+        background: #faf5e9 !important;
+        border: 1px solid #b8a382 !important;
+        border-top: 2.5px solid #7c5c32 !important;
+      }
+
+      body.pdf-parchment .panel-title {
+        color: #6b151e !important;
+        border-bottom: 1px solid #c9b493 !important;
+      }
+
+      body.pdf-parchment label.field-label,
+      body.pdf-parchment .skill-attr {
+        color: #665847 !important;
+      }
+
+      body.pdf-parchment input[type="text"],
+      body.pdf-parchment input[type="number"],
+      body.pdf-parchment select,
+      body.pdf-parchment .print-mirror {
+        background: #f2ead8 !important;
+        color: #1d1814 !important;
+        border: 1px solid #cbb899 !important;
+      }
+
+      body.pdf-parchment .char-name-input {
+        color: #591119 !important;
+      }
+
+      body.pdf-parchment .ability-box,
+      body.pdf-parchment .vital-box,
+      body.pdf-parchment .stat-pill,
+      body.pdf-parchment .mini-card,
+      body.pdf-parchment .slot-box,
+      body.pdf-parchment .coin-box {
+        background: #f0e6d2 !important;
+        border: 1px solid #96784b !important;
+      }
+
+      body.pdf-parchment .ability-name,
+      body.pdf-parchment .skill-bonus,
+      body.pdf-parchment .stat-pill .val {
+        color: #6b151e !important;
+      }
+
+      body.pdf-parchment .ability-mod,
+      body.pdf-parchment .vital-box input {
+        color: #1a1511 !important;
+      }
+
+      body.pdf-parchment .hp-panel {
+        background: linear-gradient(180deg, #ebd2d0 0%, #f5ebd9 100%) !important;
+        border: 1.5px solid #8a1c28 !important;
+      }
+
+      body.pdf-parchment .hp-bar-track {
+        background: #d8c6b8 !important;
+        border-color: #8a1c28 !important;
+      }
+
+      body.pdf-parchment .slot-box .slot-lvl {
+        color: #204c7a !important;
+      }
+
+      body.pdf-parchment .list-row:nth-child(even) {
+        background: rgba(124, 92, 50, 0.08) !important;
+      }
+
+      body.pdf-parchment .prof-dot {
+        border-color: #6e5a42 !important;
+      }
+
+      body.pdf-parchment .prof-dot[data-level="1"] {
+        background: #8a1c28 !important;
+        border-color: #5e1018 !important;
+        color: #fff !important;
+      }
+
+      body.pdf-parchment .prof-dot[data-level="2"] {
+        background: #1f548c !important;
+        border-color: #133559 !important;
+        color: #fff !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="pdf-obsidian">
+
+  <div class="print-page-bg" aria-hidden="true"></div>
+
+  <header class="toolbar no-print">
+    <div class="brand">
+      <div class="brand-sigil">K</div>
+      <div>
+        <div class="brand-title">CRÔNICAS DE KEMORRA</div>
+        <div class="brand-sub">Ficha Oficial de Caçador • Ano 804 E.C. (5e Adaptado)</div>
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <span class="save-status" id="saveStatus">Salvo automaticamente</span>
+      <select id="pdfThemeSelect" class="theme-select" onchange="setPdfTheme(this.value)" title="Estilo visual ao salvar em PDF">
+        <option value="pdf-obsidian">PDF: Obsidiana &amp; Latão</option>
+        <option value="pdf-parchment">PDF: Pergaminho da Cinza</option>
+      </select>
+      <button class="btn btn-gold" onclick="printStylizedPDF()">🖨 Salvar PDF Estilizado</button>
+      <button class="btn" onclick="exportJSON()">⬇ Exportar .JSON</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()">⬆ Importar .JSON</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)" />
+      <button class="btn btn-crimson" onclick="resetSheet()">✕ Limpar</button>
+    </div>
+  </header>
+
+  <main class="sheet-container">
+    <div class="print-banner">
+      <div class="print-banner-left">
+        <div class="brand-sigil">K</div>
+        <div>
+          <div class="print-banner-title">CRÔNICAS DE KEMORRA</div>
+          <div class="print-banner-sub">O Véu de Cinzas e Sangue — Registro Oficial de Caçador (5e Adaptado)</div>
+        </div>
+      </div>
+      <div class="print-banner-seal">Era da Cinza • Ano 804 E.C.</div>
+    </div>
+
+    <section class="panel">
+      <div class="identity-grid">
+        <div>
+          <label class="field-label">Nome do Personagem</label>
+          <input type="text" id="charName" class="char-name-input" placeholder="Nome do Caçador" />
+        </div>
+        <div>
+          <label class="field-label">Raça / Linhagem</label>
+          <input type="text" id="charRace" placeholder="Raça ou linhagem mestiça" />
+        </div>
+        <div>
+          <label class="field-label">Classe &amp; Subclasse</label>
+          <input type="text" id="charClass" placeholder="Classe e doutrina" />
+        </div>
+        <div>
+          <label class="field-label">Nível (1–20)</label>
+          <input type="number" id="charLevel" min="1" max="20" value="1" oninput="recalcAll()" />
+        </div>
+        <div>
+          <label class="field-label">Origem Geográfica</label>
+          <input type="text" id="charOrigin" placeholder="Região ou cidade natal" />
+        </div>
+        <div>
+          <label class="field-label">Vínculo com a Guilda / Contrato</label>
+          <input type="text" id="charGuild" placeholder="Guilda ou motivação" />
+        </div>
+        <div>
+          <label class="field-label">Devoção / Filosofia</label>
+          <input type="text" id="charFaith" placeholder="Divindade, pacto ou código" />
+        </div>
+        <div>
+          <label class="field-label">Jogador(a)</label>
+          <input type="text" id="playerName" placeholder="Seu nome" />
+        </div>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col-left">
+        <section class="panel">
+          <div class="panel-title">
+            <span>Os Seis Atributos</span>
+            <span class="no-print" style="font-size:10px; color:var(--text-muted); font-family:Inter;">clique no mod p/ rolar</span>
+          </div>
+
+          <div class="strip-grid">
+            <div class="stat-pill">
+              <label class="field-label">Proficiência</label>
+              <div class="val" id="profBonusDisplay">+2</div>
+            </div>
+            <div class="stat-pill">
+              <label class="field-label">Percepção Passiva</label>
+              <div class="val" id="passivePercDisplay">10</div>
+            </div>
+          </div>
+
+          <div class="abilities-grid" id="abilitiesContainer"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <span>Testes de Resistência</span>
+            <span class="no-print" style="font-size:10px; color:var(--text-muted); font-family:Inter;">● proficiente</span>
+          </div>
+          <div id="savesContainer"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <span>As 18 Perícias</span>
+            <span class="no-print" style="font-size:10px; color:var(--text-muted); font-family:Inter;">● prof | ◆ 2x</span>
+          </div>
+          <div id="skillsContainer"></div>
+        </section>
+      </div>
+
+      <div class="col-center">
+        <section class="panel">
+          <div class="panel-title"><span>Combate &amp; Sobrevivência</span></div>
+
+          <div class="vitals-top">
+            <div class="vital-box">
+              <label class="field-label">Armadura (CA)</label>
+              <input type="number" id="statAC" value="10" />
+            </div>
+            <div class="vital-box">
+              <label class="field-label">Iniciativa</label>
+              <input type="text" id="statInit" value="+0" title="Modificador de Iniciativa" />
+              <button class="btn btn-sm no-print" style="margin-top:3px;" onclick="rollInitiative()">Rolar</button>
+            </div>
+            <div class="vital-box">
+              <label class="field-label">Deslocamento</label>
+              <input type="text" id="statSpeed" value="9 m" />
+            </div>
+            <div class="vital-box">
+              <label class="field-label">Dado de Vida</label>
+              <input type="text" id="statHitDice" value="1d8" />
+            </div>
+          </div>
+
+          <div class="hp-panel">
+            <div class="hp-grid">
+              <div>
+                <label class="field-label">PV Máximos</label>
+                <input type="number" id="hpMax" value="10" oninput="updateHpBar()" />
+              </div>
+              <div>
+                <label class="field-label">PV Atuais</label>
+                <input type="number" id="hpCurrent" value="10" oninput="updateHpBar()" />
+              </div>
+              <div>
+                <label class="field-label">PV Temporários</label>
+                <input type="number" id="hpTemp" value="0" />
+              </div>
+            </div>
+            <div class="hp-bar-track">
+              <div class="hp-bar-fill" id="hpBarFill"></div>
+            </div>
+          </div>
+
+          <div class="death-exhaust-grid">
+            <div class="mini-card">
+              <label class="field-label">Salvaguardas contra Morte</label>
+              <div class="check-row">
+                <span>Sucessos</span>
+                <div class="check-group">
+                  <input type="checkbox" id="ds1" /><input type="checkbox" id="ds2" /><input type="checkbox" id="ds3" />
+                </div>
+              </div>
+              <div class="check-row">
+                <span>Falhas</span>
+                <div class="check-group">
+                  <input type="checkbox" id="df1" /><input type="checkbox" id="df2" /><input type="checkbox" id="df3" />
+                </div>
+              </div>
+            </div>
+            <div class="mini-card">
+              <label class="field-label">Condições &amp; Exaustão (0–6)</label>
+              <div style="display:flex; gap:6px; align-items:center; margin-top:4px;">
+                <input type="number" id="exhaustion" min="0" max="6" value="0" style="width:48px; text-align:center;" />
+                <input type="text" id="conditions" placeholder="Ex.: Envenenado, Caído..." />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <span>Ataques &amp; Arsenal</span>
+            <button class="btn btn-sm no-print" onclick="addAttackRow()">+ Arma</button>
+          </div>
+          <table class="dynamic-table">
+            <thead>
+              <tr>
+                <th style="width:38%;">Arma / Truque</th>
+                <th style="width:16%;">Acerto</th>
+                <th style="width:30%;">Dano &amp; Tipo</th>
+                <th class="no-print" style="width:16%;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="attacksBody"></tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <span>Recursos de Classe &amp; Raça</span>
+            <button class="btn btn-sm no-print" onclick="addResourceRow()">+ Recurso</button>
+          </div>
+          <table class="dynamic-table">
+            <thead>
+              <tr>
+                <th style="width:46%;">Habilidade / Recurso</th>
+                <th style="width:17%;">Atual</th>
+                <th style="width:17%;">Máx</th>
+                <th style="width:20%;">Recarga</th>
+              </tr>
+            </thead>
+            <tbody id="resourcesBody"></tbody>
+          </table>
+        </section>
+
+        <section class="panel allow-break">
+          <div class="panel-title"><span>Traços Raciais, Doutrinas &amp; Talentos</span></div>
+          <textarea id="traitsText" style="min-height: 220px;" placeholder="Anote aqui os traços da sua raça, habilidades da sua classe, subclasse e talentos de Kemorra..."></textarea>
+          <div class="print-mirror" data-for="traitsText"></div>
+        </section>
+      </div>
+
+      <div class="col-right">
+        <section class="panel allow-break">
+          <div class="panel-title"><span>Conjuração &amp; Magias</span></div>
+
+          <div class="spell-header-grid">
+            <div>
+              <label class="field-label">Atributo-Chave</label>
+              <select id="spellAbility" onchange="recalcAll()">
+                <option value="none" selected>Nenhum</option>
+                <option value="int">Inteligência</option>
+                <option value="sab">Sabedoria</option>
+                <option value="car">Carisma</option>
+              </select>
+            </div>
+            <div class="stat-pill" style="padding:5px;">
+              <label class="field-label">CD Magia</label>
+              <div class="val" id="spellDCDisplay" style="font-size:17px;">—</div>
+            </div>
+            <div class="stat-pill" style="padding:5px;">
+              <label class="field-label">Atq. Mágico</label>
+              <div class="val" id="spellAtkDisplay" style="font-size:17px;">—</div>
+            </div>
+          </div>
+
+          <label class="field-label" style="margin-bottom:6px;">Espaços de Magia (Atual / Máximo)</label>
+          <div class="slots-grid" id="spellSlotsGrid"></div>
+
+          <label class="field-label">Truques (Círculo 0)</label>
+          <textarea id="cantripsText" style="min-height: 75px; margin-bottom: 8px;" placeholder="Liste seus truques..."></textarea>
+          <div class="print-mirror" data-for="cantripsText"></div>
+
+          <label class="field-label">Magias Conhecidas / Preparadas</label>
+          <textarea id="spellsText" style="min-height: 155px;" placeholder="Liste suas magias por círculo (1º ao 9º)..."></textarea>
+          <div class="print-mirror" data-for="spellsText"></div>
+        </section>
+
+        <section class="panel allow-break">
+          <div class="panel-title"><span>Equipamento, Moedas &amp; Ofícios</span></div>
+          <div class="coins-grid">
+            <div class="coin-box">
+              <label class="field-label" style="color:var(--gold-bright);">Ouro (PO)</label>
+              <input type="number" id="coinGold" value="0" />
+            </div>
+            <div class="coin-box">
+              <label class="field-label" style="color:#cfd8e3;">Prata (PP)</label>
+              <input type="number" id="coinSilver" value="0" />
+            </div>
+            <div class="coin-box">
+              <label class="field-label" style="color:#d48c59;">Cobre (PC)</label>
+              <input type="number" id="coinCopper" value="0" />
+            </div>
+          </div>
+
+          <label class="field-label">Idiomas &amp; Proficiências (Armas, Armaduras, Ferramentas)</label>
+          <textarea id="proficienciesText" style="min-height: 72px; margin-bottom: 8px;" placeholder="Idiomas, armaduras, armas e ferramentas de ofício..."></textarea>
+          <div class="print-mirror" data-for="proficienciesText"></div>
+
+          <label class="field-label">Inventário &amp; Itens de Sobrevivência</label>
+          <textarea id="inventoryText" style="min-height: 115px;" placeholder="Mochila, lamparina, filtro contra cinza, poções, Sais de Amônia..."></textarea>
+          <div class="print-mirror" data-for="inventoryText"></div>
+        </section>
+
+        <section class="panel allow-break">
+          <div class="panel-title"><span>História, Cicatrizes &amp; Notas de Mesa</span></div>
+          <textarea id="notesText" style="min-height: 110px;" placeholder="Dívidas, segredos, contatos e diário da campanha..."></textarea>
+          <div class="print-mirror" data-for="notesText"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="dice-bar no-print">
+    <div class="dice-buttons">
+      <span style="font-family:Cinzel; font-size:12px; color:var(--gold); font-weight:700;">DADOS:</span>
+      <select id="rollMode" class="mode-select" title="Modo de rolagem para d20">
+        <option value="normal">Normal</option>
+        <option value="adv">Vantagem (2d20↑)</option>
+        <option value="dis">Desvantagem (2d20↓)</option>
+      </select>
+      <button class="die-btn" onclick="rollSimpleDie(4)">d4</button>
+      <button class="die-btn" onclick="rollSimpleDie(6)">d6</button>
+      <button class="die-btn" onclick="rollSimpleDie(8)">d8</button>
+      <button class="die-btn" onclick="rollSimpleDie(10)">d10</button>
+      <button class="die-btn" onclick="rollSimpleDie(12)">d12</button>
+      <button class="die-btn" onclick="rollSimpleDie(20)">d20</button>
+      <button class="die-btn" onclick="rollSimpleDie(100)">d100</button>
+    </div>
+    <div class="roll-output" id="rollOutput">
+      <span>Clique em qualquer modificador, perícia ou arma para rolar.</span>
+    </div>
+  </footer>
+
+  <script>
+    const ABILITIES = [
+      { id: 'for', name: 'FORÇA', short: 'FOR' },
+      { id: 'des', name: 'DESTREZA', short: 'DES' },
+      { id: 'con', name: 'CONSTITUIÇÃO', short: 'CON' },
+      { id: 'int', name: 'INTELIGÊNCIA', short: 'INT' },
+      { id: 'sab', name: 'SABEDORIA', short: 'SAB' },
+      { id: 'car', name: 'CARISMA', short: 'CAR' }
+    ];
+
+    const SKILLS = [
+      { id: 'acrobacia', name: 'Acrobacia', attr: 'des' },
+      { id: 'arcanismo', name: 'Arcanismo', attr: 'int' },
+      { id: 'atletismo', name: 'Atletismo', attr: 'for' },
+      { id: 'atuacao', name: 'Atuação', attr: 'car' },
+      { id: 'enganacao', name: 'Enganação', attr: 'car' },
+      { id: 'furtividade', name: 'Furtividade', attr: 'des' },
+      { id: 'historia', name: 'História', attr: 'int' },
+      { id: 'intimidacao', name: 'Intimidação', attr: 'car' },
+      { id: 'intuicao', name: 'Intuição', attr: 'sab' },
+      { id: 'investigacao', name: 'Investigação', attr: 'int' },
+      { id: 'lidar_animais', name: 'Lidar com Animais', attr: 'sab' },
+      { id: 'medicina', name: 'Medicina', attr: 'sab' },
+      { id: 'natureza', name: 'Natureza', attr: 'int' },
+      { id: 'percepcao', name: 'Percepção', attr: 'sab' },
+      { id: 'persuasao', name: 'Persuasão', attr: 'car' },
+      { id: 'prestidigitacao', name: 'Prestidigitação', attr: 'des' },
+      { id: 'religiao', name: 'Religião', attr: 'int' },
+      { id: 'sobrevivencia', name: 'Sobrevivência', attr: 'sab' }
+    ];
+
+    const STORAGE_KEY = 'kemorra_character_sheet_v2';
+
+    let state = {
+      scores: { for: 10, des: 10, con: 10, int: 10, sab: 10, car: 10 },
+      saves: { for: 0, des: 0, con: 0, int: 0, sab: 0, car: 0 },
+      skills: {},
+      attacks: [],
+      resources: [],
+      spellSlots: {},
+      pdfTheme: 'pdf-obsidian'
+    };
+
+    SKILLS.forEach(s => state.skills[s.id] = 0);
+    for (let i = 1; i <= 9; i++) state.spellSlots[i] = { cur: 0, max: 0 };
+
+    function getMod(score) {
+      return Math.floor((Number(score || 10) - 10) / 2);
+    }
+
+    function fmtMod(n) {
+      return n >= 0 ? `+${n}` : `${n}`;
+    }
+
+    function getProfBonus() {
+      const lvl = Math.max(1, Math.min(20, parseInt(document.getElementById('charLevel').value || 1, 10)));
+      return Math.ceil(lvl / 4) + 1;
+    }
+
+    function setPdfTheme(theme) {
+      document.body.classList.remove('pdf-obsidian', 'pdf-parchment');
+      document.body.classList.add(theme || 'pdf-obsidian');
+      state.pdfTheme = theme || 'pdf-obsidian';
+      const sel = document.getElementById('pdfThemeSelect');
+      if (sel) sel.value = state.pdfTheme;
+      scheduleSave();
+    }
+
+    function syncPrintMirrors() {
+      document.querySelectorAll('.print-mirror').forEach(mirror => {
+        const srcId = mirror.getAttribute('data-for');
+        const src = document.getElementById(srcId);
+        if (src) {
+          const val = (src.value || '').trim();
+          mirror.textContent = val || '—';
+        }
+      });
+    }
+
+    function printStylizedPDF() {
+      syncPrintMirrors();
+      window.print();
+    }
+
+    window.addEventListener('beforeprint', syncPrintMirrors);
+
+    function initDOM() {
+      const abEl = document.getElementById('abilitiesContainer');
+      abEl.innerHTML = ABILITIES.map(ab => `
+        <div class="ability-box">
+          <div class="ability-name">${ab.name}</div>
+          <div class="ability-mod" id="mod_${ab.id}" onclick="rollD20('Teste de ${ab.name}', getMod(state.scores['${ab.id}']))">+0</div>
+          <input type="number" class="ability-score" id="score_${ab.id}" min="0" max="30" value="10" oninput="onScoreChange('${ab.id}', this.value)" />
+        </div>
+      `).join('');
+
+      const svEl = document.getElementById('savesContainer');
+      svEl.innerHTML = ABILITIES.map(ab => `
+        <div class="list-row">
+          <button class="prof-dot" id="save_dot_${ab.id}" data-level="0" onclick="toggleSave('${ab.id}')" title="Alternar Proficiência"></button>
+          <span class="skill-name" onclick="rollSave('${ab.id}')">${ab.name.charAt(0) + ab.name.slice(1).toLowerCase()}</span>
+          <span class="skill-bonus" id="save_val_${ab.id}" onclick="rollSave('${ab.id}')">+0</span>
+        </div>
+      `).join('');
+
+      const skEl = document.getElementById('skillsContainer');
+      skEl.innerHTML = SKILLS.map(sk => `
+        <div class="list-row">
+          <button class="prof-dot" id="skill_dot_${sk.id}" data-level="0" onclick="toggleSkill('${sk.id}')" title="Clique: Sem treino → Proficiente → Especialista (2x)"></button>
+          <span class="skill-name" onclick="rollSkill('${sk.id}')">${sk.name}</span>
+          <span class="skill-attr">${sk.attr}</span>
+          <span class="skill-bonus" id="skill_val_${sk.id}" onclick="rollSkill('${sk.id}')">+0</span>
+        </div>
+      `).join('');
+
+      const slEl = document.getElementById('spellSlotsGrid');
+      let slHtml = '';
+      for (let i = 1; i <= 9; i++) {
+        slHtml += `
+          <div class="slot-box">
+            <div class="slot-lvl">${i}º Círculo</div>
+            <div class="slot-inputs">
+              <input type="number" min="0" max="9" id="slot_cur_${i}" value="0" oninput="onSlotChange(${i})" />
+              <span>/</span>
+              <input type="number" min="0" max="9" id="slot_max_${i}" value="0" oninput="onSlotChange(${i})" />
+            </div>
+          </div>
+        `;
+      }
+      slEl.innerHTML = slHtml;
+
+      document.querySelectorAll('input, textarea, select').forEach(el => {
+        if (el.id !== 'importFile' && el.id !== 'rollMode' && el.id !== 'pdfThemeSelect') {
+          el.addEventListener('input', scheduleSave);
+          el.addEventListener('change', scheduleSave);
+        }
+      });
+    }
+
+    function onScoreChange(id, val) {
+      state.scores[id] = parseInt(val || 0, 10);
+      recalcAll();
+      scheduleSave();
+    }
+
+    function toggleSave(id) {
+      state.saves[id] = state.saves[id] ? 0 : 1;
+      recalcAll();
+      scheduleSave();
+    }
+
+    function toggleSkill(id) {
+      state.skills[id] = (state.skills[id] + 1) % 3;
+      recalcAll();
+      scheduleSave();
+    }
+
+    function onSlotChange(lvl) {
+      state.spellSlots[lvl] = {
+        cur: parseInt(document.getElementById(`slot_cur_${lvl}`).value || 0, 10),
+        max: parseInt(document.getElementById(`slot_max_${lvl}`).value || 0, 10)
+      };
+      scheduleSave();
+    }
+
+    function getSaveTotal(id) {
+      return getMod(state.scores[id]) + (state.saves[id] ? getProfBonus() : 0);
+    }
+
+    function getSkillTotal(id) {
+      const sk = SKILLS.find(s => s.id === id);
+      const profLevel = state.skills[id] || 0;
+      return getMod(state.scores[sk.attr]) + (profLevel * getProfBonus());
+    }
+
+    function recalcAll() {
+      const prof = getProfBonus();
+      document.getElementById('profBonusDisplay').textContent = fmtMod(prof);
+
+      ABILITIES.forEach(ab => {
+        const mod = getMod(state.scores[ab.id]);
+        document.getElementById(`mod_${ab.id}`).textContent = fmtMod(mod);
+        document.getElementById(`score_${ab.id}`).value = state.scores[ab.id];
+
+        const svDot = document.getElementById(`save_dot_${ab.id}`);
+        svDot.dataset.level = state.saves[ab.id] ? '1' : '0';
+        svDot.textContent = state.saves[ab.id] ? '✓' : '';
+        document.getElementById(`save_val_${ab.id}`).textContent = fmtMod(getSaveTotal(ab.id));
+      });
+
+      SKILLS.forEach(sk => {
+        const lvl = state.skills[sk.id] || 0;
+        const dot = document.getElementById(`skill_dot_${sk.id}`);
+        dot.dataset.level = String(lvl);
+        dot.textContent = lvl === 2 ? '2' : (lvl === 1 ? '✓' : '');
+        document.getElementById(`skill_val_${sk.id}`).textContent = fmtMod(getSkillTotal(sk.id));
+      });
+
+      document.getElementById('passivePercDisplay').textContent = 10 + getSkillTotal('percepcao');
+
+      const spAb = document.getElementById('spellAbility').value;
+      if (spAb === 'none') {
+        document.getElementById('spellDCDisplay').textContent = '—';
+        document.getElementById('spellAtkDisplay').textContent = '—';
+      } else {
+        const spMod = getMod(state.scores[spAb]);
+        document.getElementById('spellDCDisplay').textContent = 8 + prof + spMod;
+        document.getElementById('spellAtkDisplay').textContent = fmtMod(prof + spMod);
+      }
+
+      updateHpBar();
+    }
+
+    function updateHpBar() {
+      const max = Math.max(1, parseInt(document.getElementById('hpMax').value || 1, 10));
+      const cur = Math.max(0, parseInt(document.getElementById('hpCurrent').value || 0, 10));
+      const pct = Math.min(100, Math.round((cur / max) * 100));
+      document.getElementById('hpBarFill').style.width = pct + '%';
+    }
+
+    function renderAttacks() {
+      const tbody = document.getElementById('attacksBody');
+      tbody.innerHTML = state.attacks.map((atk, idx) => `
+        <tr>
+          <td><input type="text" value="${escapeHtml(atk.name)}" oninput="state.attacks[${idx}].name=this.value; scheduleSave();" placeholder="Nome da arma" /></td>
+          <td><input type="text" value="${escapeHtml(atk.bonus)}" oninput="state.attacks[${idx}].bonus=this.value; scheduleSave();" placeholder="+2" style="text-align:center;" /></td>
+          <td><input type="text" value="${escapeHtml(atk.damage)}" oninput="state.attacks[${idx}].damage=this.value; scheduleSave();" placeholder="1d6 cort." /></td>
+          <td class="no-print" style="white-space:nowrap;">
+            <button class="icon-btn" onclick="rollAttack(${idx})" title="Rolar Acerto">🎯</button>
+            <button class="icon-btn" onclick="rollDamage(${idx})" title="Rolar Dano">💥</button>
+            <button class="icon-btn danger" onclick="removeAttack(${idx})" title="Remover">✕</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function addAttackRow(name = '', bonus = '+2', damage = '1d6') {
+      state.attacks.push({ name, bonus, damage });
+      renderAttacks();
+      scheduleSave();
+    }
+
+    function removeAttack(idx) {
+      state.attacks.splice(idx, 1);
+      renderAttacks();
+      scheduleSave();
+    }
+
+    function renderResources() {
+      const tbody = document.getElementById('resourcesBody');
+      tbody.innerHTML = state.resources.map((res, idx) => `
+        <tr>
+          <td><input type="text" value="${escapeHtml(res.name)}" oninput="state.resources[${idx}].name=this.value; scheduleSave();" placeholder="Ex.: Fúria, Prana, Inspiração" /></td>
+          <td><input type="number" value="${res.cur}" oninput="state.resources[${idx}].cur=Number(this.value); scheduleSave();" style="text-align:center;" /></td>
+          <td><input type="number" value="${res.max}" oninput="state.resources[${idx}].max=Number(this.value); scheduleSave();" style="text-align:center;" /></td>
+          <td style="display:flex; gap:4px; align-items:center;">
+            <input type="text" value="${escapeHtml(res.reset)}" oninput="state.resources[${idx}].reset=this.value; scheduleSave();" placeholder="DL / DC" />
+            <button class="icon-btn danger no-print" onclick="removeResource(${idx})">✕</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function addResourceRow(name = '', cur = 1, max = 1, reset = 'DL') {
+      state.resources.push({ name, cur, max, reset });
+      renderResources();
+      scheduleSave();
+    }
+
+    function removeResource(idx) {
+      state.resources.splice(idx, 1);
+      renderResources();
+      scheduleSave();
+    }
+
+    function rand(sides) {
+      return Math.floor(Math.random() * sides) + 1;
+    }
+
+    function displayRoll(label, total, detail, flag = '') {
+      const cls = flag === 'crit' ? 'crit' : (flag === 'fumble' ? 'fumble' : '');
+      document.getElementById('rollOutput').innerHTML = `
+        <span><strong>${escapeHtml(label)}</strong> <span style="color:var(--text-muted); font-size:13px;">(${escapeHtml(detail)})</span></span>
+        <span class="roll-total ${cls}">${total}</span>
+      `;
+    }
+
+    function rollD20(label, bonus) {
+      const mode = document.getElementById('rollMode').value;
+      const b = Number(bonus || 0);
+      let d1 = rand(20), d2 = rand(20), chosen = d1, detail = `d20:${d1}`;
+      if (mode === 'adv') {
+        chosen = Math.max(d1, d2);
+        detail = `2d20↑:[${d1}, ${d2}]→${chosen}`;
+      } else if (mode === 'dis') {
+        chosen = Math.min(d1, d2);
+        detail = `2d20↓:[${d1}, ${d2}]→${chosen}`;
+      }
+      if (b !== 0) detail += ` ${b >= 0 ? '+' : '-'} ${Math.abs(b)}`;
+      const flag = chosen === 20 ? 'crit' : (chosen === 1 ? 'fumble' : '');
+      displayRoll(label, chosen + b, detail, flag);
+    }
+
+    function rollSave(id) {
+      const ab = ABILITIES.find(a => a.id === id);
+      rollD20(`Salvaguarda de ${ab.short}`, getSaveTotal(id));
+    }
+
+    function rollSkill(id) {
+      const sk = SKILLS.find(s => s.id === id);
+      rollD20(sk.name, getSkillTotal(id));
+    }
+
+    function rollInitiative() {
+      const raw = document.getElementById('statInit').value;
+      const bonus = parseInt(raw, 10) || getMod(state.scores.des);
+      rollD20('Iniciativa', bonus);
+    }
+
+    function rollAttack(idx) {
+      const atk = state.attacks[idx];
+      const bonus = parseInt(atk.bonus, 10) || 0;
+      rollD20(`Ataque: ${atk.name || 'Arma'}`, bonus);
+    }
+
+    function rollDamage(idx) {
+      const atk = state.attacks[idx];
+      const expr = (atk.damage || '1d6').trim();
+      const match = expr.match(/(\d+)\s*d\s*(\d+)\s*([+-]\s*\d+)?/i);
+      if (!match) {
+        displayRoll(`Dano: ${atk.name}`, expr, 'fórmula manual');
+        return;
+      }
+      const count = parseInt(match[1], 10);
+      const sides = parseInt(match[2], 10);
+      const mod = match[3] ? parseInt(match[3].replace(/\s+/g, ''), 10) : 0;
+      let rolls = [], sum = 0;
+      for (let i = 0; i < count; i++) {
+        const r = rand(sides);
+        rolls.push(r);
+        sum += r;
+      }
+      const total = sum + mod;
+      const modStr = mod !== 0 ? ` ${mod >= 0 ? '+' : '-'} ${Math.abs(mod)}` : '';
+      displayRoll(`Dano: ${atk.name || 'Arma'}`, total, `[${rolls.join('+')}]${modStr}`);
+    }
+
+    function rollSimpleDie(sides) {
+      if (sides === 20) {
+        rollD20('Rolagem d20', 0);
+        return;
+      }
+      const r = rand(sides);
+      displayRoll(`d${sides}`, r, `1d${sides}`);
+    }
+
+    const TEXT_FIELDS = [
+      'charName', 'charRace', 'charClass', 'charLevel', 'charOrigin', 'charGuild', 'charFaith', 'playerName',
+      'statAC', 'statInit', 'statSpeed', 'statHitDice', 'hpMax', 'hpCurrent', 'hpTemp',
+      'exhaustion', 'conditions', 'traitsText', 'spellAbility', 'cantripsText', 'spellsText',
+      'coinGold', 'coinSilver', 'coinCopper', 'proficienciesText', 'inventoryText', 'notesText'
+    ];
+    const CHECK_FIELDS = ['ds1', 'ds2', 'ds3', 'df1', 'df2', 'df3'];
+
+    function collectData() {
+      const fields = {};
+      TEXT_FIELDS.forEach(id => fields[id] = document.getElementById(id).value);
+      const checks = {};
+      CHECK_FIELDS.forEach(id => checks[id] = document.getElementById(id).checked);
+      return {
+        version: 'kemorra-2.0',
+        fields,
+        checks,
+        state
+      };
+    }
+
+    function applyData(data) {
+      if (!data) return;
+      if (data.fields) {
+        TEXT_FIELDS.forEach(id => {
+          if (data.fields[id] !== undefined) document.getElementById(id).value = data.fields[id];
+        });
+      }
+      if (data.checks) {
+        CHECK_FIELDS.forEach(id => {
+          document.getElementById(id).checked = !!data.checks[id];
+        });
+      }
+      if (data.state) {
+        state = Object.assign({
+          scores: { for: 10, des: 10, con: 10, int: 10, sab: 10, car: 10 },
+          saves: { for: 0, des: 0, con: 0, int: 0, sab: 0, car: 0 },
+          skills: {},
+          attacks: [],
+          resources: [],
+          spellSlots: {},
+          pdfTheme: 'pdf-obsidian'
+        }, data.state);
+      }
+      SKILLS.forEach(s => {
+        if (state.skills[s.id] === undefined) state.skills[s.id] = 0;
+      });
+      for (let i = 1; i <= 9; i++) {
+        const sl = (state.spellSlots && state.spellSlots[i]) || { cur: 0, max: 0 };
+        state.spellSlots[i] = sl;
+        document.getElementById(`slot_cur_${i}`).value = sl.cur;
+        document.getElementById(`slot_max_${i}`).value = sl.max;
+      }
+      setPdfTheme(state.pdfTheme || 'pdf-obsidian');
+      renderAttacks();
+      renderResources();
+      recalcAll();
+      syncPrintMirrors();
+    }
+
+    let saveTimer = null;
+    function scheduleSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+          document.getElementById('saveStatus').textContent = 'Salvo ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        } catch (e) {}
+      }, 200);
+    }
+
+    function exportJSON() {
+      const data = collectData();
+      const name = (data.fields.charName || 'ficha_kemorra').toLowerCase().replace(/[^a-z0-9]+/gi, '_');
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${name}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          applyData(parsed);
+          scheduleSave();
+          alert('Ficha importada com sucesso!');
+        } catch (err) {
+          alert('Erro ao ler o arquivo .JSON. Verifique se é uma ficha válida de Kemorra.');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function resetSheet() {
+      if (!confirm('Limpar todos os campos da ficha atual?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      TEXT_FIELDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (id === 'charLevel') el.value = 1;
+        else if (id === 'statAC' || id === 'hpMax' || id === 'hpCurrent') el.value = 10;
+        else if (id === 'statInit') el.value = '+0';
+        else if (id === 'statSpeed') el.value = '9 m';
+        else if (id === 'statHitDice') el.value = '1d8';
+        else if (id === 'spellAbility') el.value = 'none';
+        else if (el.type === 'number') el.value = 0;
+        else el.value = '';
+      });
+      CHECK_FIELDS.forEach(id => document.getElementById(id).checked = false);
+      state = {
+        scores: { for: 10, des: 10, con: 10, int: 10, sab: 10, car: 10 },
+        saves: { for: 0, des: 0, con: 0, int: 0, sab: 0, car: 0 },
+        skills: {},
+        attacks: [{ name: '', bonus: '+2', damage: '1d6' }],
+        resources: [{ name: '', cur: 1, max: 1, reset: 'DL' }],
+        spellSlots: {},
+        pdfTheme: state.pdfTheme || 'pdf-obsidian'
+      };
+      SKILLS.forEach(s => state.skills[s.id] = 0);
+      for (let i = 1; i <= 9; i++) {
+        state.spellSlots[i] = { cur: 0, max: 0 };
+        document.getElementById(`slot_cur_${i}`).value = 0;
+        document.getElementById(`slot_max_${i}`).value = 0;
+      }
+      renderAttacks();
+      renderResources();
+      recalcAll();
+      syncPrintMirrors();
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    initDOM();
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        applyData(JSON.parse(saved));
+      } catch (e) {
+        addAttackRow('', '+2', '1d6');
+        addResourceRow('', 1, 1, 'DL');
+        recalcAll();
+      }
+    } else {
+      addAttackRow('', '+2', '1d6');
+      addResourceRow('', 1, 1, 'DL');
+      recalcAll();
+    }
+  </script>
+</body>
+</html>
